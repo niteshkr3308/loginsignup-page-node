@@ -1,11 +1,14 @@
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://localhost:27017/loginsignup")
+mongoose.connect("mongodb://localhost:27017/loginsignup", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
     .then(() => {
         console.log("MongoDB connected");
     })
-    .catch(() => {
-        console.log("Failed to connect");
+    .catch((err) => {
+        console.error("Failed to connect", err);
     });
 
 const loginschema = new mongoose.Schema({
