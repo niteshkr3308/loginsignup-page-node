@@ -1,9 +1,6 @@
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://localhost:27017/loginsignup", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-})
+mongoose.connect("mongodb://localhost:27017/loginsignup")
     .then(() => {
         console.log("MongoDB connected");
     })
@@ -18,13 +15,8 @@ const loginschema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: true,
-        select: false
+        required: true
     },
     resetToken: String,
     resetTokenExpiration: Date
 });
-
-const collection = mongoose.model("collection1", loginschema);
-
-module.exports = collection;
